@@ -9,7 +9,7 @@ from flask import Flask, request, jsonify  # For creating the Flask API
 superkart_api = Flask("SuperKart")
 
 # Load the trained model
-model = joblib.load("rf_estimator.joblib")
+model = joblib.load("models/rf_estimator.joblib")
 
 # Define a route for the home page
 @superkart_api.get('/')
@@ -23,18 +23,18 @@ def predict_sales():
     data = request.get_json()
 
 # Extract relevant features from the input data
-sample = {
-    'Product_Weight': data['Product_Weight'],
-    'Product_Sugar_Content': data['Product_Sugar_Content'],
-    'Product_Allocated_Area': data['Product_Allocated_Area'],
-    'Product_MRP': data['Product_MRP'],
-    'Store_Id': data['Store_Id'],
-    'Store_Size': data['Store_Size'],
-    'Store_Location_City_Type': data['Store_Location_City_Type'],
-    'Store_Type': data['Store_Type'],
-    'Product_Id_First2': data['Product_Id_First2'],
-    'Store_Establishment_Age': data['Store_Establishment_Age'],
-    'Product_Type_Category': data['Product_Type_Category']
+    sample = {
+      'Product_Weight': data['Product_Weight'],
+      'Product_Sugar_Content': data['Product_Sugar_Content'],
+      'Product_Allocated_Area': data['Product_Allocated_Area'],
+      'Product_MRP': data['Product_MRP'],
+      'Store_Id': data['Store_Id'],
+      'Store_Size': data['Store_Size'],
+      'Store_Location_City_Type': data['Store_Location_City_Type'],
+      'Store_Type': data['Store_Type'],
+      'Product_Id_First2': data['Product_Id_First2'],
+      'Store_Establishment_Age': data['Store_Establishment_Age'],
+      'Product_Type_Category': data['Product_Type_Category']
     }
 
     # Convert the extracted data into a DataFrame
