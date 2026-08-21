@@ -1,0 +1,17 @@
+services:
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend_files/Dockerfile
+    ports:
+      - "7860:7860"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend_files/Dockerfile
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
